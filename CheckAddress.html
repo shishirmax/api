@@ -1,0 +1,48 @@
+ <html>
+<head>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"
+              integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+              crossorigin="anonymous">                  
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#btnGetWeather').click(function () {
+                var resultElement = $('#resultDiv');                
+                var requestData = $('#txtAddress').val();
+                $.ajax({
+                    url: 'https://maps.googleapis.com/maps/api/geocode/json?address='+requestData+'&key=AIzaSyAnkNz_LwkyLkH5eosMfJNMNn0CZCcSCyU',
+                    method: 'get',
+                    data: { address: requestData },
+                    dataType: 'json',
+                    success: function (response) {
+                        console.log(response);
+                        if (response.message != null) {
+                            resultElement.html(response.message);
+                        }
+                        else {
+                            resultElement.html('Formatted Address: ' + response.results[0].formatted_address + '<br/>'
+                                + 'Latitude: ' + response.results[0].geometry.location.lat + '</br>'
+                                + 'Longitude:' + response.results[0].geometry.location.lng);
+                        }
+                    },
+                    error: function (err) {
+                        alert(err);
+                    }
+                });
+            });
+        });
+    </script>
+</head>
+<body style="font-family:Arial">
+    <table>
+        <tr>
+            <td>Address</td>
+            <td><input type="text" id="txtAddress" /></td>
+        </tr>
+    </table>
+    <input type="button" id="btnGetWeather" value="Get Address Data">
+    <br /><br />
+    <div id="resultDiv">
+    </div>
+</body>
+</html>
