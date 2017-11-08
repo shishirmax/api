@@ -1,4 +1,4 @@
-import urllib2
+import urllib3
 import json
  
 address_api = 'AIzaSyAnkNz_LwkyLkH5eosMfJNMNn0CZCcSCyU'
@@ -12,5 +12,5 @@ def locu_search(query):
     data = json.load(json_obj)
    
     for item in data['results']:
-        #print item['formatted_address'], item['geometry.location.lat']
-        print item['results']
+        print (item['formatted_address'], item['geometry.location.lat'],item['geometry.location.lng'])
+        #print item['results']
