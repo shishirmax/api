@@ -6,7 +6,7 @@
     </script>
     <script type="text/javascript">
         $(document).ready(function () {
-            $('#btnGetWeather').click(function () {
+            $('#btnGetAddress').click(function () {
                 var resultElement = $('#resultDiv');                
                 var requestData = $('#txtAddress').val();
                 $.ajax({
@@ -40,7 +40,7 @@
             <td><input type="text" id="txtAddress" /></td>
         </tr>
     </table>
-    <input type="button" id="btnGetWeather" value="Get Address Data">
+    <input type="button" id="btnGetAddress" value="Get Address Data">
     <br /><br />
     <div id="resultDiv">
     </div>
