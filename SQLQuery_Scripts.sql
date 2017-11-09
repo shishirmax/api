@@ -10,7 +10,11 @@ CREATE TABLE googleApiAddress(
 select * from googleApiAddress
 
 select count(*) from tblSales_24102017
+where RecordIDs = '1037616'
 
+select * from edina_google_normalized
+
+select max(LEN([formatted address])) from edina_google_normalized
 
 CREATE PROCEDURE spInsertAddressData
 @formattedAddress NVARCHAR(250),
@@ -29,3 +33,17 @@ declare @PageNumber int = 3
 			FROM tblsales_24102017) AS TBL
 WHERE Number BETWEEN ((@PageNumber - 1) * 500 + 1) AND (@PageNumber * 500)
 ORDER BY Number
+
+
+CREATE TABLE[dbo].[Tweets_JSON]  
+    (  
+        [JSON_STRING][varchar](max) NULL)  
+BULK INSERT[dbo].[Tweets_JSON]  FROM 'D:\GIT\api\curl_data\newdelhi.txt'
+
+select * from [Tweets_JSON]
+
+SELECT J.*FROM[dbo].[Tweets_JSON]  
+CROSS APPLY OPENJSON(JSON_STRING)  
+With(  
+    [results] Varchar(100)
+)J
