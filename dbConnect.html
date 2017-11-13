@@ -1,0 +1,25 @@
+<html>
+    <head>
+        <title>Db Connect</title>
+        <script>
+            var connection = new ActiveXObject("ADODB.Connection") ;
+
+            var connectionstring="Data Source=SHISHIRS;Initial Catalog=EdinaLocal;User ID=sa;Password=sysadmin;Provider=SQLOLEDB";
+
+            connection.Open(connectionstring);
+            var rs = new ActiveXObject("ADODB.Recordset");
+
+            rs.Open("SELECT [Address],Latitude,Longitude FROM tblSales", connection);
+            rs.MoveFirst
+            while(!rs.eof)
+            {
+            document.write(rs.fields(1));
+            rs.movenext;
+            }
+
+            rs.close;
+            connection.close; 
+        </script>
+    </head>
+</html>
+

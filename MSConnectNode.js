@@ -4,7 +4,7 @@ var dbConfig = {
 	server:"SHISHIRS",
 	database:"EdinaLocal",
 	user:"sa",
-	password:"",
+	password:"sysadmin",
 	port:1433
 };
 
@@ -12,7 +12,7 @@ function getAddress(){
 	var conn = new sql.Connection(dbConfig);
 	conn.connect().then(function(){
 		var req = new sql.Request(conn);
-		req.query("Select address from tblSales").then(function(recordset){
+		req.query("Select [Address] from tblSales").then(function(recordset){
 			console.log(recordset);
 			conn.close();
 		})

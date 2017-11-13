@@ -1,0 +1,22 @@
+{
+  "name": "api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "MSConnectNode.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shishirmax/api.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shishirmax/api/issues"
+  },
+  "homepage": "https://github.com/shishirmax/api#readme",
+  "dependencies": {
+    "mssql": "^4.1.0"
+  }
+}
